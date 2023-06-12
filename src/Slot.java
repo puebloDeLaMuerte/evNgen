@@ -1,0 +1,108 @@
+import processing.core.PShape;
+import processing.core.PVector;
+
+public class Slot {
+	
+	Main pa;
+	
+	PShape sgfx;
+	int row, col;
+	String name;
+	Panel panel;
+	
+	Device device;
+	
+	boolean isMouseOver = false;
+	
+	PVector slotSize;
+	PVector slotHalfSize;
+	PVector slotTopLeft; // this slot's top left corner coordinates
+	PVector slotBottomRight; // this slot's bottom right corner coordinates
+	PVector centerRelativePos; // this slot's position relative to the center of the svg (which is probably always going to be in the center of the screen, too)
+	
+	public Slot(Main pApplet, PShape gfx, int r, int c, String n, Panel p, PVector svgCenterCoords) {
+		
+		pa = pApplet;
+		
+		sgfx = gfx;
+		row = r;
+		col = c;
+		name = n;
+		panel = p;
+		pa.println("Slot: " + p.panelName + ".r" + r + ".c" + c + "." + n);
+		
+		PVector svgCoordinatesOfCenterOfSlot = Utils.centerCoordinates(sgfx);
+		centerRelativePos = PVector.sub(svgCoordinatesOfCenterOfSlot, svgCenterCoords);
+		
+		PVector[] minmax = Utils.minMaxXY(sgfx);
+		
+		slotSize = new PVector(minmax[1].x - minmax[0].x, minmax[1].y - minmax[0].y); // calculate width and height of slot
+		slotHalfSize = new PVector((minmax[1].x - minmax[0].x) / 2, (minmax[1].y - minmax[0].y) / 2);
+		
+		slotTopLeft = new PVector(centerRelativePos.x - slotHalfSize.x, centerRelativePos.y - slotHalfSize.y);
+		slotBottomRight = new PVector(centerRelativePos.x + slotHalfSize.x, centerRelativePos.y + slotHalfSize.y);
+		
+		sgfx.translate(-minmax[0].x - slotSize.x / 2, -minmax[0].y - slotSize.y / 2);  // move the svg-child back to (0,0) minus half it's size (because somehow just calling shapeMode(CENTER) before drawing them doesn't work - dunno why, this is just a fix for this. TODO: fund out why it doesn't work to have coherent drawing behaviour all around (this diry fix no good in that respect)
+		//sgfx.translate(-minmax[0].x, -minmax[0].y); // should just be like this, but shapeMode(CENTER) doesnt work when drawing somehow:
+		
+		pa.println("slot-center, center-relative: " + centerRelativePos);
+	}
+	
+	
+	public void drawSlot() {
+		
+		pa.pushStyle();
+		pa.pushMatrix();
+		
+		pa.translate(centerRelativePos.x, centerRelativePos.y);
+		
+		sgfx.disableStyle();
+		pa.fill(0);
+		if (isMouseOver) pa.fill(30);
+		//cockpit.setTexture(tex);
+		pa.stroke(120);
+		pa.strokeWeight(0.3f);
+		
+		// translate(random(3),random(3)); // this is a fun effect - maybe use it for hyperdrive, or slot-selection...
+		pa.shapeMode(pa.CENTER);
+		pa.shape(sgfx, 0, 0);
+    
+    /*
+    if( isMouseOver ) {
+      rectMode(CENTER);
+      noFill();
+      stroke(0,0,255);
+      rect(0,0,slotSize.x,slotSize.y);
+    }
+    */
+		
+		pa.popMatrix();
+		pa.popStyle();
+	}
+	
+	// determine if the given Coordinates are inside this slot
+	public boolean mouseOver(int mXc, int mYc) {
+		
+		if (mXc > slotTopLeft.x) {
+			if (mXc < slotBottomRight.x) {
+				if (mYc > slotTopLeft.y) {
+					if (mYc < slotBottomRight.y) {
+						isMouseOver = true;
+						return true;
+					}
+				}
+			}
+		}
+		isMouseOver = false;
+		return false;
+	}
+	
+	public void addDevice(Device device) {
+		this.device = device;
+	}
+	
+	public boolean isEmpty() {
+		if (device == null) return true;
+		return false;
+	}
+}
