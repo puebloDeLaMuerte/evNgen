@@ -5,14 +5,14 @@ import processing.core.*;
 public class System {
 	
 	
-	Main pa;
+	EVNgen pa;
 	Stars stars;
 	
 	ArrayList<iSysObject> objects = new ArrayList<iSysObject>();
 	iSysObject focalObject = null;
 	PVector lastFocalPosition;
 	
-	public System(Main pApplet) {
+	public System(EVNgen pApplet) {
 		pa = pApplet;
 		stars = new Stars( pa,1000);
 		registerSysObject( new Celestial(pa,0,0,400), false) ;

@@ -3,7 +3,7 @@ import processing.core.PVector;
 
 public class Slot {
 	
-	Main pa;
+	EVNgen pa;
 	
 	PShape sgfx;
 	int row, col;
@@ -20,7 +20,7 @@ public class Slot {
 	PVector slotBottomRight; // this slot's bottom right corner coordinates
 	PVector centerRelativePos; // this slot's position relative to the center of the svg (which is probably always going to be in the center of the screen, too)
 	
-	public Slot(Main pApplet, PShape gfx, int r, int c, String n, Panel p, PVector svgCenterCoords) {
+	public Slot(EVNgen pApplet, PShape gfx, int r, int c, String n, Panel p, PVector svgCenterCoords) {
 		
 		pa = pApplet;
 		
@@ -56,16 +56,23 @@ public class Slot {
 		
 		pa.translate(centerRelativePos.x, centerRelativePos.y);
 		
-		sgfx.disableStyle();
-		pa.fill(0);
-		if (isMouseOver) pa.fill(30);
-		//cockpit.setTexture(tex);
-		pa.stroke(120);
-		pa.strokeWeight(0.3f);
-		
-		// translate(random(3),random(3)); // this is a fun effect - maybe use it for hyperdrive, or slot-selection...
-		pa.shapeMode(pa.CENTER);
-		pa.shape(sgfx, 0, 0);
+		if( device == null ) {
+			sgfx.disableStyle();
+			pa.fill(0);
+			if (isMouseOver) pa.fill(30);
+			//cockpit.setTexture(tex);
+			pa.stroke(120);
+			pa.strokeWeight(0.3f);
+			
+			// translate(random(3),random(3)); // this is a fun effect - maybe use it for hyperdrive, or slot-selection...
+			pa.shapeMode(pa.CENTER);
+			pa.shape(sgfx, 0, 0);
+		}
+		else {
+			// apply pa.translate() to device.dgfx here, so that it is drawn at the correct position relative to the slot
+			pa.translate(slotHalfSize.x * (device.cols-1),slotHalfSize.y * (device.rows-1));
+			pa.shape(device.dgfx, 0, 0, slotSize.x * device.cols, slotSize.y * device.rows);
+		}
     
     /*
     if( isMouseOver ) {

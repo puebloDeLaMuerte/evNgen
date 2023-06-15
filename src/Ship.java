@@ -2,7 +2,7 @@ import processing.core.*;
 
 class Ship implements iSysObject, iBusDevice<ShipTelemetryData> {
 	
-	Main pa;
+	EVNgen pa;
 	private String name;
 	
 	private float turnSpeed = 120;
@@ -21,7 +21,7 @@ class Ship implements iSysObject, iBusDevice<ShipTelemetryData> {
 	
 	private Cockpit cockpit;
 	
-	public Ship( Main pApplet, int dataID) {
+	public Ship(EVNgen pApplet, int dataID) {
 		
 		pa = pApplet;
 		
@@ -141,6 +141,11 @@ class Ship implements iSysObject, iBusDevice<ShipTelemetryData> {
 	
 	public int getIBusAdress() {
 		return 1; // the ship itself is always on adress 1
+	}
+	
+	public void ApplyDevice(Device device) {
+		
+		cockpit.ApplyDevice(device);
 	}
 }
 

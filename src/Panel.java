@@ -3,7 +3,7 @@ import processing.core.PVector;
 
 public class Panel {
 	
-	Main pa;
+	EVNgen pa;
 	Slot[][] slots;
 	String panelName;
 	
@@ -14,7 +14,7 @@ public class Panel {
 	
 	boolean isMouseOver = false;
 	
-	public Panel(Main pApplet, PShape panelShape, PVector svgCenterCoords) {
+	public Panel(EVNgen pApplet, PShape panelShape, PVector svgCenterCoords) {
 		
 		pa = pApplet;
 		

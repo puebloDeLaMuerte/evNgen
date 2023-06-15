@@ -1,11 +1,10 @@
 import processing.core.*;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Cockpit {
 	
-	Main pa;
+	EVNgen pa;
 	private PShape cgfx;
 	
 	private ArrayList<Panel> panels = new ArrayList<Panel>(); // all panels that this cockpit has
@@ -22,7 +21,7 @@ public class Cockpit {
 	//PImage tex = loadImage("tx/carbon-fiber.jpg");
 	//textureMode(NORMAL);
 	
-	public Cockpit(Main pApplet, Ship ship) {
+	public Cockpit(EVNgen pApplet, Ship ship) {
 		
 		pa = pApplet;
 		
@@ -110,8 +109,59 @@ public class Cockpit {
 		}
 	}
 	
-	public PVector getDisplayOffset() {
+	public PVector getDisplayOffset()
+	{
 		return new PVector(0,-160);
+	}
+	
+	public void ApplyDevice(Device device) {
+		
+		pa.println("applying device: " + device.deviceName);
+		
+		// find the panel and slot that the mouse is over
+		for( Panel p : panels) {
+			if( p.isMouseOver ) {
+				
+				// find the slot that the mouse is over
+				// iterate over the two dimensional slots array
+				for( int i = 0; i < p.slots.length; i++ ) {
+					for( int j = 0; j < p.slots[i].length; j++ ) {
+						
+						// check if the mouse is over the slot
+						if( p.slots[i][j].isMouseOver ) {
+							
+							Slot slot = p.slots[i][j];
+							
+							// check if the slot is empty
+							if( slot.device == null ) {
+								
+								// check if the device dimensions exceed the slot dimensions if device is to be fit at i j
+								if( device.rows + i > p.slots.length || device.cols + j > p.slots[i].length ) {
+									pa.println("device dimensions exceed slot dimensions at this position: " + i + " " + j + "");
+									return;
+								}
+								
+								// check if the slots that would be used up by the device are empty
+								for( int k = 0; k < device.rows; k++ ) {
+									for( int l = 0; l < device.cols; l++ ) {
+										if( p.slots[i+k][j+l].device != null ) {
+											pa.println("device cannot be placed here, because the slots are not empty");
+											//return;
+										}
+									}
+								}
+								
+								// assign the device to the slot
+								slot.device = device;
+							}
+							else {
+								slot.device = null;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 

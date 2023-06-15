@@ -2,7 +2,7 @@ import processing.core.PShape;
 import java.io.File;
 
 public class Device {
-	Main pa;
+	EVNgen pa;
 	
 	String deviceName; // name of the device from deviceDataFile
 	PShape dgfx;
@@ -13,7 +13,8 @@ public class Device {
 	int mass; // mass of the device from deviceDataFile
 	
 	
-	public Device(Main pApplet, File devDirectory) {
+	
+	public Device(EVNgen pApplet, File devDirectory) {
 		
 		pa = pApplet;
 		
@@ -31,21 +32,26 @@ public class Device {
 		String[] lines = pa.loadStrings( deviceDirectory + "/deviceData.json" );
 		
 		for( String l : lines ) {
-			if( l.startsWith("manufacturer") ) {
+			
+			l = l.trim();
+			l = l.replace(",", "");
+			
+			if( l.startsWith("\"manufacturer") ) {
 				manufacturer = l.split(":")[1].trim();
 			}
-			if( l.startsWith("rows") ) {
+			if( l.startsWith("\"rows") ) {
 				rows = Integer.parseInt( l.split(":")[1].trim() );
 			}
-			if( l.startsWith("cols") ) {
+			if( l.startsWith("\"cols") ) {
 				cols = Integer.parseInt( l.split(":")[1].trim() );
 			}
-			if( l.startsWith("price") ) {
+			if( l.startsWith("\"price") ) {
 				price = Integer.parseInt( l.split(":")[1].trim() );
 			}
-			if( l.startsWith("mass") ) {
+			if( l.startsWith("\"mass") ) {
 				mass = Integer.parseInt( l.split(":")[1].trim() );
 			}
 		}
 	}
+	
 }

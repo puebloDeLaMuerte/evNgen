@@ -1,5 +1,3 @@
-import processing.core.PApplet;
-
 import java.io.File;
 import java.util.ArrayList;
 
@@ -7,16 +5,16 @@ public class EVData {
 	
 	//private String[]
 	
-	Main pa;
+	EVNgen pa;
 	
-	public EVData(Main pApplet) {
+	public EVData(EVNgen pApplet) {
 		pa = pApplet;
 	}
 	
 	
 	public EVDataFile shipData; // Data File for all the ships
 	
-	public void InitEvDataFiles( Main pa, String[] lines) {
+	public void InitEvDataFiles(EVNgen pa, String[] lines) {
 		
 		shipData = new EVDataFile(pa, lines);
 	}
@@ -28,8 +26,9 @@ public class EVData {
 		
 		ArrayList<Device> tempDevices = new ArrayList<Device>();
 		
-		String devicesPath = "/data/devices";
+		String devicesPath = "data/devices";
 		File file = new File( devicesPath );
+		
 		String[] directories = file.list();
 		
 		for( String d : directories ) {

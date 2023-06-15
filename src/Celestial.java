@@ -2,11 +2,11 @@ import processing.core.*;
 
 public class Celestial implements iSysObject{
 	
-	Main pa;
+	EVNgen pa;
 	private PVector position;
 	private float size;
 	
-	public Celestial( Main pApplet, float x, float y, float size) {
+	public Celestial(EVNgen pApplet, float x, float y, float size) {
 		
 		pa = pApplet;
 		position = new PVector(x,y);

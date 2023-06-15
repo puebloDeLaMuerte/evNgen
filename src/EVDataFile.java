@@ -1,15 +1,13 @@
-import processing.core.PApplet;
-
 import java.util.HashMap;
 
 public class EVDataFile {
 	
-	Main pa;
+	EVNgen pa;
 	private HashMap<String, Integer> fields;
 	private String[][] data;
 	
 	
-	public EVDataFile(Main pApplet, String[] fileStrings) {
+	public EVDataFile(EVNgen pApplet, String[] fileStrings) {
 		
 		pa = pApplet;
 		

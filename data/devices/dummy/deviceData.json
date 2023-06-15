@@ -1,0 +1,8 @@
+{
+  "name": "dummyDevice",
+  "manufacturer": "dummyCompany",
+  "price": 1,
+  "rows": 1,
+  "cols": 1,
+  "mass": 1
+}
