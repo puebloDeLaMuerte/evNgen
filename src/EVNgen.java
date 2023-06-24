@@ -92,7 +92,9 @@ public class EVNgen extends PApplet {
         setInput(true);
         
         if( key == 'D') {
-            ship.ApplyDevice( evData.devices[1] );
+
+            // make a Copy of the Device at array pos 1 and apply it to the ship
+            ship.ApplyDevice( new Device(evData.devices[1]) );
         }
     }
 

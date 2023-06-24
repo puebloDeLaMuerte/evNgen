@@ -10,7 +10,7 @@ public class Panel {
 	PVector panelTopLeft; // top left corner of the panel in the svg
 	PVector panelBottomRight; // bottom right corner of the panel in the svg
 	
-	Device[] devices;
+	private Device[] devices;
 	
 	boolean isMouseOver = false;
 	
@@ -179,20 +179,42 @@ public class Panel {
 			return;
 		}
 		
+		// set panel and slots for device:
+		
+		device.setPanel(this);
+		
 		for (int i = r; i < r + rows; i++) {
 			for (int u = c; u < c + cols; u++) {
 				slots[i][u].addDevice(device);
 			}
 		}
+		
+		// register Device with this panel:
+		
+		if( devices == null ) devices = new Device[0];
+		Device[] tmpD = new Device[devices.length+1];
+		for( int i = 0; i < devices.length; i++ ) {
+			tmpD[i] = devices[i];
+		}
+		tmpD[devices.length] = device;
+		devices = tmpD;
 	}
 	
 	
 	
 	
 	public void drawPanel() {
+		
 		for( Slot[] sarr : slots ) {
 			for( Slot slot : sarr ) {
 				slot.drawSlot();
+			}
+		}
+		
+		if( devices != null ) {
+			
+			for( Device d : devices ) {
+				d.drawDevice();
 			}
 		}
 	}

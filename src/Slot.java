@@ -56,7 +56,7 @@ public class Slot {
 		
 		pa.translate(centerRelativePos.x, centerRelativePos.y);
 		
-		if( device == null ) {
+		if( device == null ) {   // if there's no decvice in the slot, draw a generic slot-cover
 			sgfx.disableStyle();
 			pa.fill(0);
 			if (isMouseOver) pa.fill(30);
@@ -69,9 +69,10 @@ public class Slot {
 			pa.shape(sgfx, 0, 0);
 		}
 		else {
+			
 			// apply pa.translate() to device.dgfx here, so that it is drawn at the correct position relative to the slot
-			pa.translate(slotHalfSize.x * (device.cols-1),slotHalfSize.y * (device.rows-1));
-			pa.shape(device.dgfx, 0, 0, slotSize.x * device.cols, slotSize.y * device.rows);
+		//	pa.translate(slotHalfSize.x * (device.cols-1),slotHalfSize.y * (device.rows-1));
+		//	pa.shape(device.dgfx, 0, 0, slotSize.x * device.cols, slotSize.y * device.rows);
 		}
     
     /*
@@ -105,6 +106,7 @@ public class Slot {
 	}
 	
 	public void addDevice(Device device) {
+		device.addSlot(this);
 		this.device = device;
 	}
 	

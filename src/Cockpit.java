@@ -114,6 +114,7 @@ public class Cockpit {
 		return new PVector(0,-160);
 	}
 	
+	
 	public void ApplyDevice(Device device) {
 		
 		pa.println("applying device: " + device.deviceName);
@@ -122,7 +123,6 @@ public class Cockpit {
 		for( Panel p : panels) {
 			if( p.isMouseOver ) {
 				
-				// find the slot that the mouse is over
 				// iterate over the two dimensional slots array
 				for( int i = 0; i < p.slots.length; i++ ) {
 					for( int j = 0; j < p.slots[i].length; j++ ) {
@@ -146,16 +146,17 @@ public class Cockpit {
 									for( int l = 0; l < device.cols; l++ ) {
 										if( p.slots[i+k][j+l].device != null ) {
 											pa.println("device cannot be placed here, because the slots are not empty");
-											//return;
+											return;
 										}
 									}
 								}
 								
 								// assign the device to the slot
-								slot.device = device;
+								//slot.device = device;
+								p.addDeviceAt(device, i, j);
 							}
 							else {
-								slot.device = null;
+								slot.device = null; // remove exitsting device from the slot
 							}
 						}
 					}
