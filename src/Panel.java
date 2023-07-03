@@ -90,8 +90,8 @@ public class Panel {
 		
 		float minX = Float.MAX_VALUE;
 		float minY = Float.MAX_VALUE;
-		float maxX = Float.MIN_VALUE;
-		float maxY = Float.MIN_VALUE;
+		float maxX = -Float.MAX_VALUE;
+		float maxY = -Float.MAX_VALUE;
 		
 		for (Slot[] sarr : slots) {
 			for (Slot slot : sarr) {
@@ -270,6 +270,15 @@ public class Panel {
 				d.drawDevice();
 			}
 		}
+
+		// debug: use pa.rect() to draw the panel:
+		if( isMouseOver ) {
+			pa.noFill();
+			pa.stroke(255,20);
+			pa.rect(panelTopLeft.x, panelTopLeft.y, panelBottomRight.x-panelTopLeft.x, panelBottomRight.y-panelTopLeft.y);
+		}
+
+
 	}
 
 }

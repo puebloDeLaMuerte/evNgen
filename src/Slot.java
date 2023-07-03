@@ -6,7 +6,7 @@ public class Slot {
 	EVNgen pa;
 	
 	PShape sgfx;
-	int row, col;
+	int rowIndex, colIndex;
 	String name;
 	Panel panel;
 	
@@ -25,8 +25,8 @@ public class Slot {
 		pa = pApplet;
 		
 		sgfx = gfx;
-		row = r;
-		col = c;
+		rowIndex = r;
+		colIndex = c;
 		name = n;
 		panel = p;
 		pa.println("Slot: " + p.panelName + ".r" + r + ".c" + c + "." + n);

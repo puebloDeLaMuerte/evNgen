@@ -125,13 +125,13 @@ public class Device {
 
 		int[] topLeftSlotIndex = new int[2];
 
-		topLeftSlotIndex[0] = slots[0].row;
-		topLeftSlotIndex[1] = slots[0].col;
+		topLeftSlotIndex[0] = slots[0].rowIndex;
+		topLeftSlotIndex[1] = slots[0].colIndex;
 
 		for( Slot s : slots ) {
 
-			if( s.row < topLeftSlotIndex[0] ) topLeftSlotIndex[0] = s.row;
-			if( s.col < topLeftSlotIndex[1] ) topLeftSlotIndex[1] = s.col;
+			if( s.rowIndex < topLeftSlotIndex[0] ) topLeftSlotIndex[0] = s.rowIndex;
+			if( s.colIndex < topLeftSlotIndex[1] ) topLeftSlotIndex[1] = s.colIndex;
 		}
 
 		return topLeftSlotIndex;
