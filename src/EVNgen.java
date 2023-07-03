@@ -10,7 +10,8 @@ public class EVNgen extends PApplet {
     
     public float deltaTime; // time spent since last frame in seconds;
     float lastDeltaTimeStamp;
-    
+
+    int tempDeviceSelector = 0;
     
     PShape cursor;
     
@@ -91,10 +92,19 @@ public class EVNgen extends PApplet {
     public void keyPressed() {
         setInput(true);
         
-        if( key == 'D') {
+        if( key == 'd') {
 
-            // make a Copy of the Device at array pos 1 and apply it to the ship
-            ship.ApplyDevice( new Device(evData.devices[1]) );
+            // make a Copy of the Device at array pos tempDeviceSelector and apply it to the ship
+            ship.ApplyDeviceToSlotUnderCursor( new Device(evData.devices[tempDeviceSelector]) );
+        }
+        if( key == 'D') {
+            ship.RemoveDeviceFromSlotUnderCursor();
+        }
+
+        if( key == '^' ) {
+
+            tempDeviceSelector++;
+            tempDeviceSelector %= evData.devices.length;
         }
     }
 

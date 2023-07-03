@@ -104,10 +104,19 @@ public class Slot {
 		isMouseOver = false;
 		return false;
 	}
-	
+
+	/*
+	public void removeRevice(Device d ) {
+		d.removeFromSlots();
+		device = null;
+	}
+	*/
+
 	public void addDevice(Device device) {
-		device.addSlot(this);
+		//device.addSlot(this);
+		//device.setPanel(panel);
 		this.device = device;
+
 	}
 	
 	public boolean isEmpty() {

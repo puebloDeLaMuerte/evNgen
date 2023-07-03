@@ -143,9 +143,13 @@ class Ship implements iSysObject, iBusDevice<ShipTelemetryData> {
 		return 1; // the ship itself is always on adress 1
 	}
 	
-	public void ApplyDevice(Device device) {
+	public void ApplyDeviceToSlotUnderCursor(Device device) {
 		
-		cockpit.ApplyDevice(device);
+		cockpit.ApplyDeviceFromSlotUnderCursor(device);
+	}
+
+	public void RemoveDeviceFromSlotUnderCursor() {
+		cockpit.RemoveDeviceFromSlotUnderCursor();
 	}
 }
 

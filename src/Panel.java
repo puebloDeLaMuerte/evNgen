@@ -165,32 +165,34 @@ public class Panel {
 		}
 		return true;
 	}
-	
-	
-	
+
+
+
 	// add a device to the panel at row r and column c spanning over the number of rows and columns that the device needs
 	public void addDeviceAt(Device device, int r, int c) {
-		
+
 		int rows = device.rows;
 		int cols = device.cols;
-		
+
 		if(!doesDeviceFit(device, r, c) ) {
 			pa.println("device doesn't fit here!");
 			return;
 		}
-		
+
 		// set panel and slots for device:
-		
+		// also register the device with the slots
+
 		device.setPanel(this);
-		
+
 		for (int i = r; i < r + rows; i++) {
 			for (int u = c; u < c + cols; u++) {
+				device.addSlot(slots[i][u]);
 				slots[i][u].addDevice(device);
 			}
 		}
-		
+
 		// register Device with this panel:
-		
+
 		if( devices == null ) devices = new Device[0];
 		Device[] tmpD = new Device[devices.length+1];
 		for( int i = 0; i < devices.length; i++ ) {
@@ -199,23 +201,75 @@ public class Panel {
 		tmpD[devices.length] = device;
 		devices = tmpD;
 	}
-	
-	
-	
-	
+
+
+	// remove a device from the panel at row r and column c. remove references to this panel and all slots from device.
+	public void removeDevice(Device device) {
+		/*
+		if(!doesDeviceFit(device, i, j) ) {
+			pa.println("device doesn't fit here!");
+			return;
+		}
+		*/
+
+		int[] topLeftSlotIndex = device.getTopLeftSlotIndex();
+		if( topLeftSlotIndex == null ) {
+			return;
+		}
+
+		int i = topLeftSlotIndex[0];
+		int j = topLeftSlotIndex[1];
+
+		for (int r = i; r < i + device.rows; r++) {
+			for (int c = j; c < j + device.cols; c++) {
+				slots[r][c].device = null;
+			}
+		}
+
+		// remove the device from the list of devices:
+		for ( int i2 = 0; i2 < devices.length; i2++ ) {
+			if( devices[i2] == device ) {
+				devices[i2] = null;
+			}
+		}
+
+		// copy the content of devices to a new array without the null values:
+
+		if( devices.length == 1 ) {
+			devices = null;
+		}
+		else {
+
+			Device[] tmpD = new Device[devices.length-1];
+			int i4 = 0;
+			for( int i3 = 0; i3 < devices.length; i3++ ) {
+				if( devices[i3] != null ) {
+					tmpD[i4] = devices[i3];
+					i4++;
+				}
+			}
+			devices = tmpD;
+		}
+
+		device.unsetPanel();
+	}
+
+
+
 	public void drawPanel() {
-		
+
 		for( Slot[] sarr : slots ) {
 			for( Slot slot : sarr ) {
 				slot.drawSlot();
 			}
 		}
-		
+
 		if( devices != null ) {
-			
+
 			for( Device d : devices ) {
 				d.drawDevice();
 			}
 		}
 	}
+
 }

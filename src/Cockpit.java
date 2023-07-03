@@ -115,7 +115,7 @@ public class Cockpit {
 	}
 	
 	
-	public void ApplyDevice(Device device) {
+	public void ApplyDeviceFromSlotUnderCursor(Device device) {
 		
 		pa.println("applying device: " + device.deviceName);
 		
@@ -155,8 +155,34 @@ public class Cockpit {
 								//slot.device = device;
 								p.addDeviceAt(device, i, j);
 							}
-							else {
-								slot.device = null; // remove exitsting device from the slot
+							/*else {
+								p.removeDeviceAt(slot.device,i, j);
+								//slot.device = null; // remove exitsting device from the slot
+							}*/
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public void RemoveDeviceFromSlotUnderCursor() {
+
+		// find the panel and slot that the mouse is over
+		for( Panel p : panels) {
+			if( p.isMouseOver ) {
+
+				// iterate over the two dimensional slots array
+				for( int i = 0; i < p.slots.length; i++ ) {
+					for( int j = 0; j < p.slots[i].length; j++ ) {
+
+						// check if the mouse is over the slot
+						if( p.slots[i][j].isMouseOver ) {
+
+							Slot slot = p.slots[i][j];
+
+							if( slot.device != null ) {
+								p.removeDevice(slot.device);
 							}
 						}
 					}

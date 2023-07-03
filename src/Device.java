@@ -117,7 +117,25 @@ public class Device {
 		slots = tempSlots;
 		findTopLeftBottomRight();
 	}
-	
+
+	// get the row and column index of the top left slot that this device occupies, return two integers [col, row]
+	public int[] getTopLeftSlotIndex() {
+
+		if( this.slots == null ) return null;
+
+		int[] topLeftSlotIndex = new int[2];
+
+		topLeftSlotIndex[0] = slots[0].row;
+		topLeftSlotIndex[1] = slots[0].col;
+
+		for( Slot s : slots ) {
+
+			if( s.row < topLeftSlotIndex[0] ) topLeftSlotIndex[0] = s.row;
+			if( s.col < topLeftSlotIndex[1] ) topLeftSlotIndex[1] = s.col;
+		}
+
+		return topLeftSlotIndex;
+	}
 	
 	
 	// iterate over all slots and find leftmost, rightmost, topmost and bottommost
@@ -139,5 +157,9 @@ public class Device {
 		topLeft = new PVector(leftmost, topmost);
 		bottomRight = new PVector(rightmost, bottommost);
 	}
-	
+
+	public void removeFromSlots() {
+
+		slots = null;
+	}
 }
