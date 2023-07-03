@@ -168,27 +168,42 @@ public class Cockpit {
 
 	public void RemoveDeviceFromSlotUnderCursor() {
 
-		// find the panel and slot that the mouse is over
-		for( Panel p : panels) {
+		Slot slot = getSlotUnderCursor();
+		if( slot == null ) return;
+
+		if( slot.device != null ) {
+			slot.panel.removeDevice(slot.device);
+		}
+	}
+
+	public void mousePressed() {
+
+	}
+
+
+	private Panel getPanelUnderCursor() {
+		for( Panel p : panels ) {
 			if( p.isMouseOver ) {
+				return p;
+			}
+		}
+		return null;
+	}
 
-				// iterate over the two dimensional slots array
-				for( int i = 0; i < p.slots.length; i++ ) {
-					for( int j = 0; j < p.slots[i].length; j++ ) {
+	private Slot getSlotUnderCursor() {
 
-						// check if the mouse is over the slot
-						if( p.slots[i][j].isMouseOver ) {
+		Panel p = getPanelUnderCursor();
+		if( p == null ) return null;
 
-							Slot slot = p.slots[i][j];
-
-							if( slot.device != null ) {
-								p.removeDevice(slot.device);
-							}
-						}
-					}
+		for( int i = 0; i < p.slots.length; i++ ) {
+			for( int j = 0; j < p.slots[i].length; j++ ) {
+				if( p.slots[i][j].isMouseOver ) {
+					return p.slots[i][j];
 				}
 			}
 		}
+
+		return null;
 	}
 }
 

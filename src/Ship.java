@@ -151,6 +151,10 @@ class Ship implements iSysObject, iBusDevice<ShipTelemetryData> {
 	public void RemoveDeviceFromSlotUnderCursor() {
 		cockpit.RemoveDeviceFromSlotUnderCursor();
 	}
+
+	public void mousePressed() {
+		cockpit.mousePressed();
+	}
 }
 
 

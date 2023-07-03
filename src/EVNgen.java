@@ -89,6 +89,10 @@ public class EVNgen extends PApplet {
 
 
 
+    public void mousePressed() {
+        ship.mousePressed();
+    }
+
     public void keyPressed() {
         setInput(true);
         
