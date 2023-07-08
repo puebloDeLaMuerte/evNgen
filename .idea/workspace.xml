@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b250b4f-997c-4e83-b8cd-15b393d5462c" name="Changes" comment="better (more robust) device assignment and removal from slots and panels">
+    <list default="true" id="0b250b4f-997c-4e83-b8cd-15b393d5462c" name="Changes" comment="bugfix in panel.isMouseOver and code cleanup">
+      <change afterPath="$PROJECT_DIR$/src/DeviceInteractiveElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/devices/ab_KeyMap/deviceData.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cockpit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cockpit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EVNgen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EVNgen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Slot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ship.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +34,7 @@
     <setting file="file://$PROJECT_DIR$/src/Panel.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2QkfnoGc8aa3IIYIao0l6jtNi6Y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -120,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688422136757</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="bugfix in panel.isMouseOver and code cleanup">
+      <created>1688424779842</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1688424779842</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,7 +194,8 @@
     <MESSAGE value="implement Device assignment to Slots&#10;&#10;* devices get assigned to slots&#10;* check for device-size fitting available slots&#10;* device drawing for multi-slot devices" />
     <MESSAGE value="bugfix: float.min_value used in device-slot-dimension calculation" />
     <MESSAGE value="better (more robust) device assignment and removal from slots and panels" />
-    <option name="LAST_COMMIT_MESSAGE" value="better (more robust) device assignment and removal from slots and panels" />
+    <MESSAGE value="bugfix in panel.isMouseOver and code cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix in panel.isMouseOver and code cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -193,21 +204,6 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Cockpit.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Cockpit.java</url>
-          <line>174</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Cockpit.java</url>
-          <line>148</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

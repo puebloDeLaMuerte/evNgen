@@ -256,7 +256,7 @@ public class Panel {
 
 
 
-	public void drawPanel() {
+	public void drawPanel(boolean drawFront) {
 
 		for( Slot[] sarr : slots ) {
 			for( Slot slot : sarr ) {
@@ -267,7 +267,7 @@ public class Panel {
 		if( devices != null ) {
 
 			for( Device d : devices ) {
-				d.drawDevice();
+				d.drawDevice(drawFront);
 			}
 		}
 

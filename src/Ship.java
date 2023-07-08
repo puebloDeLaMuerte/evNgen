@@ -155,6 +155,10 @@ class Ship implements iSysObject, iBusDevice<ShipTelemetryData> {
 	public void mousePressed() {
 		cockpit.mousePressed();
 	}
+
+	public Cockpit getCockpit() {
+		return cockpit;
+	}
 }
 
 

@@ -1,12 +1,14 @@
 import processing.core.*;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Device {
 	EVNgen pa;
 	
 	String deviceName; // name of the device from deviceDataFile
-	PShape dgfx;
+	PShape dgfx_front;
+	PShape dgfx_back;
 	String manufacturer; // manufacturer of the device from deviceDataFile
 	int rows, cols; // number of rows and cols in a Cockpit.Panel that this device spans over. from deviceDataFile
 	int price; // price of the device from deviceDataFile
@@ -18,6 +20,7 @@ public class Device {
 	private PVector topLeft;
 	private PVector bottomRight;
 
+	private DeviceInteractiveElement[] interactiveElements;
 
 	/// copy constructor
 	public Device(Device d) {
@@ -25,12 +28,14 @@ public class Device {
 		pa = d.pa;
 
 		deviceName = d.deviceName;
-		dgfx = d.dgfx;
+		dgfx_front = d.dgfx_front;
+		dgfx_back = d.dgfx_back;
 		manufacturer = d.manufacturer;
 		rows = d.rows;
 		cols = d.cols;
 		price = d.price;
 		mass = d.mass;
+
 	}
 
 
@@ -42,8 +47,36 @@ public class Device {
 		pa.print("DeviceName: " + deviceName);
 		String s = devDirectory.getAbsolutePath()+"/"+deviceName+".svg";
 		pa.println(" at " + s);
-		dgfx = pa.loadShape( s );
 		loadDeviceData( devDirectory.getAbsolutePath() );
+
+		PShape graphicsShape = pa.loadShape( s );
+		dgfx_front = graphicsShape.getChild("front");
+		dgfx_back = graphicsShape.getChild("back");
+
+		// DEBUG
+		//dgfx_front = graphicsShape;
+
+
+		// make dgfx_front and dgfx_back the same size as graphicsShape
+		//dgfx_front.scale( graphicsShape.width, graphicsShape.height );
+		//dgfx_back.scale( graphicsShape.width, graphicsShape.height );
+
+		// loop through all children of dgfx
+		// and copy them to this device's dgfx
+
+		ArrayList<PShape> children = new ArrayList<PShape>();
+
+		for(int i = 0; i < dgfx_front.getChildCount(); i++ ) {
+			PShape child = dgfx_front.getChild(i);
+
+			if( child.getName().startsWith("interactive") ) {
+				children.add( child );
+			}
+		}
+		interactiveElements = new DeviceInteractiveElement[children.size()];
+		for( int i = 0; i < children.size(); i++ ) {
+			interactiveElements[i] = new DeviceInteractiveElement( children.get(i) );
+		}
 	}
 	
 	// load device data from json file
@@ -76,13 +109,18 @@ public class Device {
 	
 	
 	
-	public void drawDevice() {
+	public void drawDevice( boolean drawFront ) {
 		
 		pa.pushMatrix();
 		pa.pushStyle();;
 		
 		pa.shapeMode(pa.CORNERS);
-		pa.shape( dgfx, topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
+		if( drawFront ) {
+			pa.shape(dgfx_front, topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
+		} else {
+			pa.shape(dgfx_back, topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
+		}
+		//pa.shape(dgfx_front, topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
 		
 		pa.popStyle();
 		pa.popMatrix();
@@ -100,7 +138,8 @@ public class Device {
 		topLeft = null;
 		bottomRight = null;
 	}
-	
+
+
 	// copy slots[] to new array of size+1 and add it to the slots[]
 	public void addSlot( Slot s ) {
 		
@@ -117,6 +156,7 @@ public class Device {
 		slots = tempSlots;
 		findTopLeftBottomRight();
 	}
+
 
 	// get the row and column index of the top left slot that this device occupies, return two integers [col, row]
 	public int[] getTopLeftSlotIndex() {

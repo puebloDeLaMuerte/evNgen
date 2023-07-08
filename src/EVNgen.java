@@ -14,13 +14,17 @@ public class EVNgen extends PApplet {
     int tempDeviceSelector = 0;
     
     PShape cursor;
-    
+
+    boolean commandKeyDown = false;
+    boolean controlKeyDown = false;
+    boolean optionKeyDown = false;
+
     public void settings() {
         smooth();
         println("pixel density: " + displayDensity() );
 
-        fullScreen(); // fullscreen on the second display
-        //fullScreen();
+        fullScreen();
+
         pixelDensity( displayDensity() );
         println("pixel density: " + displayDensity() );
     }
@@ -94,10 +98,22 @@ public class EVNgen extends PApplet {
     }
 
     public void keyPressed() {
-        setInput(true);
-        
-        if( key == 'd') {
 
+        setInput(true);
+
+        if ( (key == 'd' || key == 'D') && (keyCode == CONTROL) ) {
+            println("Ctrl + D is pressed!");
+        }
+
+        if( key == 'd' && commandKeyDown ) {
+            ship.getCockpit().toggleFrontBackView();
+        }
+
+        if( isModifierKeyDown() ) {
+            return;
+        }
+
+        if( key == 'd') {
             // make a Copy of the Device at array pos tempDeviceSelector and apply it to the ship
             ship.ApplyDeviceToSlotUnderCursor( new Device(evData.devices[tempDeviceSelector]) );
         }
@@ -106,7 +122,6 @@ public class EVNgen extends PApplet {
         }
 
         if( key == '^' ) {
-
             tempDeviceSelector++;
             tempDeviceSelector %= evData.devices.length;
         }
@@ -117,7 +132,23 @@ public class EVNgen extends PApplet {
         setInput(false);
     }
 
+
+    private boolean isModifierKeyDown() {
+        return controlKeyDown || commandKeyDown || optionKeyDown;
+    }
+
+
     void setInput(boolean toggle) {
+
+        if( keyCode == 17 ) {
+            controlKeyDown = toggle;
+        }
+        if( keyCode == 157 ) {
+            commandKeyDown = toggle;
+        }
+        if( keyCode == 18 ) {
+            optionKeyDown = toggle;
+        }
 
         if ( key == CODED ) {
             if ( keyCode == UP ) {

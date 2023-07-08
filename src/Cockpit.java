@@ -16,8 +16,9 @@ public class Cockpit {
 	
 	PVector anchor;
 	PShape anchorObj;
-	
-	
+	private boolean viewFront = true;
+
+
 	//PImage tex = loadImage("tx/carbon-fiber.jpg");
 	//textureMode(NORMAL);
 	
@@ -96,7 +97,7 @@ public class Cockpit {
 		*/
 		
 		for( Panel p : panels ) {
-			p.drawPanel();
+			p.drawPanel(viewFront);
 		}
 		pa.popMatrix();
 		pa.popStyle();
@@ -158,6 +159,10 @@ public class Cockpit {
 
 	}
 
+	public boolean toggleFrontBackView() {
+		viewFront = !viewFront;
+		return viewFront;
+	}
 
 	private Panel getPanelUnderCursor() {
 		for( Panel p : panels ) {
