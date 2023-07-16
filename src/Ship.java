@@ -41,8 +41,17 @@ class Ship extends EVNgenObject implements iSysObject, iBusDevice<ShipTelemetryD
 		
 		cockpit = new Cockpit(pa, this);
 	}
-	
-	
+
+	@Override
+	public void beginFrameTick() {
+		cockpit.beginFrameTick();
+	}
+
+	@Override
+	public void endFrameTick() {
+		cockpit.endFrameTick();
+	}
+
 	void setInput(ShipInput inputType, boolean inputToggle) {
 		
 		switch (inputType) {

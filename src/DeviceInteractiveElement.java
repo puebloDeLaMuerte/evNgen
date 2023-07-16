@@ -95,6 +95,16 @@ public class DeviceInteractiveElement extends EVNgenObject {
             }
         }
     }
+
+    @Override
+    void beginFrameTick() {
+
+    }
+
+    @Override
+    void endFrameTick() {
+
+    }
 }
 
 

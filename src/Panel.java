@@ -113,6 +113,17 @@ public class Panel extends EVNgenObject {
 		panelTopLeft = new PVector(minX, minY);
 		panelBottomRight = new PVector(maxX, maxY);
 	}
+
+	@Override
+	public void beginFrameTick() {
+
+	}
+
+	@Override
+	public void endFrameTick() {
+
+	}
+
 	
 	//TODO: there is a break of concept here: the panel tracks its mouseoverstate across frames and each panel gets asked for mouseover each frame, so they can set it to false.
 	//		the objects below panel (devces and interactive elements) don't get a isMouseOver() call each frame, only if the panel is mouseover.

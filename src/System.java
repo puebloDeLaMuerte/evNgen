@@ -53,6 +53,15 @@ public class System extends EVNgenObject {
 		}
 		pa.g.popMatrix();
 	}
-	
-	
+
+
+	@Override
+	void beginFrameTick() {
+
+	}
+
+	@Override
+	void endFrameTick() {
+
+	}
 }

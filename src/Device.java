@@ -269,4 +269,14 @@ public class Device extends EVNgenObject implements iBusDevice<BusData>{
 	public int getIBusAdress() {
 		return 0;
 	}
+
+	@Override
+	void beginFrameTick() {
+
+	}
+
+	@Override
+	void endFrameTick() {
+
+	}
 }

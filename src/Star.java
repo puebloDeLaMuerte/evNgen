@@ -33,4 +33,14 @@ public class Star extends EVNgenObject {
 		pa.stroke(255, 255 * intensity);
 		pa.point(xPos, yPos);
 	}
+
+	@Override
+	void beginFrameTick() {
+
+	}
+
+	@Override
+	void endFrameTick() {
+
+	}
 }

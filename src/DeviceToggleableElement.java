@@ -3,6 +3,7 @@ import processing.core.PVector;
 
 public class DeviceToggleableElement extends DeviceInteractiveElement {
 
+    private boolean mouseOver = false;
 
     private PVector localTopLeft;
     private PVector localBottomRight;
@@ -18,19 +19,21 @@ public class DeviceToggleableElement extends DeviceInteractiveElement {
 
     public boolean isMouseOver(int x, int y) {
 
-        boolean mover = (x > topLeft().x && x < bottomRight().x && y > topLeft().y && y < bottomRight().y);
+        mouseOver = (x > topLeft().x && x < bottomRight().x && y > topLeft().y && y < bottomRight().y);
 
         // is the mouse over this element and was the mouse clicked this frame
-        if( mover && pa.mousePressed && pa.mouseButton == pa.LEFT ) {
 
-            // toggle the state
-            state = (state + 1) % numStates;
-        }
 
-        return mover;
+        return mouseOver;
     }
 
     public boolean mousePressed() {
+        if( mouseOver ) {
+
+            // toggle the state
+            state = (state + 1) % numStates;
+            return true;
+        }
         return false;
     }
 

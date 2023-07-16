@@ -195,6 +195,16 @@ public class Cockpit extends EVNgenObject {
 
 		return null;
 	}
+
+	@Override
+	void beginFrameTick() {
+
+	}
+
+	@Override
+	void endFrameTick() {
+
+	}
 }
 
 

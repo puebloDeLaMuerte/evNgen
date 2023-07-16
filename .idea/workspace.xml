@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b250b4f-997c-4e83-b8cd-15b393d5462c" name="Changes" comment="implement DeviceInteractiveElement (and togglableElement)&#10;&#10;* sub-svgs switched visible according to element state&#10;* mouseOver works (but still has bugs)">
+    <list default="true" id="0b250b4f-997c-4e83-b8cd-15b393d5462c" name="Changes" comment="all classes now must extend EVNgenObject">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Celestial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Celestial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cockpit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cockpit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DeviceInteractiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceInteractiveElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeviceToggleableElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceToggleableElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuplexWire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuplexWire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EVNgen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EVNgen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EVNgenObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EVNgenObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Slot.java" afterDir="false" />
@@ -152,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689545444937</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="all classes now must extend EVNgenObject">
+      <created>1689545859657</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689545859657</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,7 +229,8 @@
     <MESSAGE value="bugfix in panel.isMouseOver and code cleanup" />
     <MESSAGE value="implement front/back view for devices" />
     <MESSAGE value="implement DeviceInteractiveElement (and togglableElement)&#10;&#10;* sub-svgs switched visible according to element state&#10;* mouseOver works (but still has bugs)" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement DeviceInteractiveElement (and togglableElement)&#10;&#10;* sub-svgs switched visible according to element state&#10;* mouseOver works (but still has bugs)" />
+    <MESSAGE value="all classes now must extend EVNgenObject" />
+    <option name="LAST_COMMIT_MESSAGE" value="all classes now must extend EVNgenObject" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -228,11 +239,6 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DeviceToggleableElement.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

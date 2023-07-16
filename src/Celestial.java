@@ -35,4 +35,14 @@ public class Celestial extends EVNgenObject implements iSysObject{
 		pa.ellipse(0,0,size,size );
 		pa.popStyle();
 	}
+
+	@Override
+	void beginFrameTick() {
+
+	}
+
+	@Override
+	void endFrameTick() {
+
+	}
 }

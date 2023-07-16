@@ -40,7 +40,16 @@ public class Stars extends EVNgenObject {
 		}
 		pa.g.popStyle();
 	}
-	
+
+	@Override
+	void beginFrameTick() {
+
+	}
+
+	@Override
+	void endFrameTick() {
+
+	}
 }
 
 

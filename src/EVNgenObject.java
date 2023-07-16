@@ -1,7 +1,5 @@
-public class EVNgenObject {
+public abstract class EVNgenObject {
 
-    public void beginFrameTick() {
-    }
-    public void endFrameTick() {
-    }
+    abstract void beginFrameTick();
+    abstract void endFrameTick();
 }

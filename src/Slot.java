@@ -134,4 +134,14 @@ public class Slot extends EVNgenObject {
 		if (device == null) return true;
 		return false;
 	}
+
+	@Override
+	void beginFrameTick() {
+
+	}
+
+	@Override
+	void endFrameTick() {
+
+	}
 }

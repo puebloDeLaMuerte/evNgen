@@ -50,6 +50,8 @@ public class EVNgen extends PApplet {
 
     public void draw() {
 
+        ship.beginFrameTick();
+        system.beginFrameTick();
 
 
         //if( frameCount % 20 == 0 ) println(frameRate);
