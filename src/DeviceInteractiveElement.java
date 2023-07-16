@@ -9,24 +9,35 @@ import java.util.ArrayList;
 // interactive elements are parsed from the svg-file of the device that is handed to them in the form of a PShape object.
 public class DeviceInteractiveElement {
 
+    EVNgen pa;
+    Device device;
     private PShape elementGraphic;
+    protected String elementName;
     private PShape[] stateGraphics;
-    private String elementName;
-    private int numStates;
-    private int state;
+    protected int numStates;
+    protected int state;
+    /*
     private PVector topLeft;
     private PVector bottomRight;
+    */
+    public DeviceInteractiveElement( EVNgen pa, Device d, PShape elemGfx, PVector topLeft, PVector bottomRight) {
 
-    public DeviceInteractiveElement(PShape elementGraphics ) {
+        this.pa = pa;
+        this.device = d;
+        //this.topLeft = topLeft;
+        //this.bottomRight = bottomRight;
 
-        // parse the interactive element from the device graphics children, extracting  the graphics for the different states of the element, their graphics and numbers.
+        // parse the interactive element from the device graphics children, extracting the graphics for the different states of the element, their graphics and numbers.
 
-        String[][] childNameParts = new String[elementGraphics.getChildCount()][];
+        elementGraphic = elemGfx;
+        elementGraphic.setVisible(true);
+
+        String[][] childNameParts = new String[elementGraphic.getChildCount()][];
         ArrayList<PShape> stateGraphics = new ArrayList<PShape>();
         ArrayList<String> stateNames = new ArrayList<String>();
 
-        for( int i = 0; i < elementGraphics.getChildCount(); i++ ) {
-            PShape child = elementGraphics.getChild(i);
+        for( int i = 0; i < elementGraphic.getChildCount(); i++ ) {
+            PShape child = elementGraphic.getChild(i);
             childNameParts[i] = child.getName().split("_");
 
             if( childNameParts[i][0].equals("state") ) {
@@ -35,12 +46,14 @@ public class DeviceInteractiveElement {
             }
         }
 
-
+        this.stateGraphics = stateGraphics.toArray(new PShape[stateGraphics.size()]);
+        this.numStates = stateGraphics.size();
         this.state = 0;
-
-        this.topLeft = new PVector(0, 0);
-        this.bottomRight = new PVector(0, 0);
     }
+
+
+    // escalate this object to an instance of a subclass of DeviceInteractiveElement
+
 
 
 
@@ -48,6 +61,7 @@ public class DeviceInteractiveElement {
         this.state = state;
     }
 
+    /*
     public PVector getTopLeft() {
         return this.topLeft;
     }
@@ -55,16 +69,42 @@ public class DeviceInteractiveElement {
     public PVector getBottomRight() {
         return this.bottomRight;
     }
+    */
+
+    public boolean isMouseOver(int x, int y) {
+        return false;
+    }
+
+    public boolean mousePressed() {
+        return false;
+    }
 
     public int getState() {
         return this.state;
     }
 
-    public void draw() {
-        // draw the current state of the interactive element
+    //toggle statGraphics visible
+    public void toggleStateGraphics() {
+
+        // iterate over all deviceGraphics and turn all of them off except for the one that matches the current state
+        for( int i = 0; i < stateGraphics.length; i++ ) {
+            if( i == state ) {
+                stateGraphics[i].setVisible(true);
+            } else {
+                stateGraphics[i].setVisible(false);
+            }
+        }
     }
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+

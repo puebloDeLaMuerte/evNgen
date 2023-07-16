@@ -109,6 +109,14 @@ public class Cockpit {
 			p.mouseOver(mXc, mYc);
 		}
 	}
+
+
+	public boolean mousePressed() {
+		for( Panel p : panels ) {
+			if( p.mousePressed() ) return true;
+		}
+		return false;
+	}
 	
 	public PVector getDisplayOffset()
 	{
@@ -155,9 +163,6 @@ public class Cockpit {
 		}
 	}
 
-	public void mousePressed() {
-
-	}
 
 	public boolean toggleFrontBackView() {
 		viewFront = !viewFront;

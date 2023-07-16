@@ -4,7 +4,7 @@ import processing.core.PVector;
 import java.util.ArrayList;
 
 
-public interface iBusDuplexConnector<T>  {
+public interface iBusDuplexConnector<T extends BusData>  {
 	
 	
 	public void postData(T data, int senderAdress );

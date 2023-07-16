@@ -114,10 +114,13 @@ public class Panel {
 		panelBottomRight = new PVector(maxX, maxY);
 	}
 	
-	
+	//TODO: there is a break of concept here: the panel tracks its mouseoverstate across frames and each panel gets asked for mouseover each frame, so they can set it to false.
+	//		the objects below panel (devces and interactive elements) don't get a isMouseOver() call each frame, only if the panel is mouseover.
+	//		so they cannot return a proper answer on mouseClicked()-propagation, cause they don't know if they are mosueOver or not.
+
 	// determine if the given coordinates are inside the panel
 	public boolean mouseOver(int x, int y) {
-		
+
 		boolean nextIsMouseOver = determineMouseOver(x, y);
 		
 		if(nextIsMouseOver || isMouseOver) {
@@ -129,10 +132,11 @@ public class Panel {
 		}
 		
 		isMouseOver = nextIsMouseOver;
+
 		return isMouseOver;
 	}
 	
-	
+
 	private boolean determineMouseOver( int x, int y) {
 		
 		if (x > panelTopLeft.x-1 && x < panelBottomRight.x+1 && y > panelTopLeft.y-1 && y < panelBottomRight.y+1) {
@@ -141,7 +145,16 @@ public class Panel {
 			return false;
 		}
 	}
-	
+
+	public boolean mousePressed() {
+		for (Slot[] sarr : slots) {
+			for (Slot slot : sarr) {
+				if( slot.mousePressed() ) return true;
+			}
+		}
+		return false;
+	}
+
 	
 	// does the given device fit in this slot?
 	public boolean doesDeviceFit(Device device, int r, int c) {

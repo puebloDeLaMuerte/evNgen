@@ -34,7 +34,7 @@ public class Slot {
 		PVector svgCoordinatesOfCenterOfSlot = Utils.centerCoordinates(sgfx);
 		centerRelativePos = PVector.sub(svgCoordinatesOfCenterOfSlot, svgCenterCoords);
 		
-		PVector[] minmax = Utils.minMaxXY(sgfx);
+		PVector[] minmax = Utils.minMaxXY(sgfx, null, null );
 		
 		slotSize = new PVector(minmax[1].x - minmax[0].x, minmax[1].y - minmax[0].y); // calculate width and height of slot
 		slotHalfSize = new PVector((minmax[1].x - minmax[0].x) / 2, (minmax[1].y - minmax[0].y) / 2);
@@ -96,12 +96,23 @@ public class Slot {
 				if (mYc > slotTopLeft.y) {
 					if (mYc < slotBottomRight.y) {
 						isMouseOver = true;
+						if( device != null) {
+							device.mouseOver(mXc, mYc);
+						}
 						return true;
 					}
 				}
 			}
 		}
 		isMouseOver = false;
+		return false;
+	}
+
+
+	public boolean mousePressed() {
+		if( device != null) {
+			if( device.mousePressed() ) return true;
+		}
 		return false;
 	}
 
