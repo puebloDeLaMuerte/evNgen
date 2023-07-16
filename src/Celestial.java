@@ -1,6 +1,6 @@
 import processing.core.*;
 
-public class Celestial implements iSysObject{
+public class Celestial extends EVNgenObject implements iSysObject{
 	
 	EVNgen pa;
 	private PVector position;

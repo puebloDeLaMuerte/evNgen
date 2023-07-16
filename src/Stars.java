@@ -2,7 +2,7 @@ import processing.core.*;
 
 import static java.lang.Math.random;
 
-public class Stars {
+public class Stars extends EVNgenObject {
 	
 	PApplet pa;
 	

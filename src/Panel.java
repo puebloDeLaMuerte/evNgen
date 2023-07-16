@@ -1,7 +1,7 @@
 import processing.core.PShape;
 import processing.core.PVector;
 
-public class Panel {
+public class Panel extends EVNgenObject {
 	
 	EVNgen pa;
 	Slot[][] slots;

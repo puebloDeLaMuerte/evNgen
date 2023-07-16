@@ -1,7 +1,7 @@
 import processing.core.PShape;
 import processing.core.PVector;
 
-public class Slot {
+public class Slot extends EVNgenObject {
 	
 	EVNgen pa;
 	

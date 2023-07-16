@@ -3,7 +3,7 @@ import processing.core.*;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Device implements  iBusDevice<BusData>{
+public class Device extends EVNgenObject implements iBusDevice<BusData>{
 	EVNgen pa;
 	
 	String deviceName; // name of the device from deviceDataFile

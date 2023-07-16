@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b250b4f-997c-4e83-b8cd-15b393d5462c" name="Changes" comment="implement front/back view for devices">
-      <change afterPath="$PROJECT_DIR$/src/BusData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DeviceToggleableElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EVNgenObject.java" afterDir="false" />
+    <list default="true" id="0b250b4f-997c-4e83-b8cd-15b393d5462c" name="Changes" comment="implement DeviceInteractiveElement (and togglableElement)&#10;&#10;* sub-svgs switched visible according to element state&#10;* mouseOver works (but still has bugs)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Celestial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Celestial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cockpit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cockpit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Device.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DeviceInteractiveElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeviceInteractiveElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EVNgen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EVNgen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuplexWire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuplexWire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iBusDuplexConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iBusDuplexConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Star.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Stars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stars.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/System.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Wire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wire.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688828630700</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="implement DeviceInteractiveElement (and togglableElement)&#10;&#10;* sub-svgs switched visible according to element state&#10;* mouseOver works (but still has bugs)">
+      <created>1689545444937</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689545444937</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,7 +218,8 @@
     <MESSAGE value="better (more robust) device assignment and removal from slots and panels" />
     <MESSAGE value="bugfix in panel.isMouseOver and code cleanup" />
     <MESSAGE value="implement front/back view for devices" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement front/back view for devices" />
+    <MESSAGE value="implement DeviceInteractiveElement (and togglableElement)&#10;&#10;* sub-svgs switched visible according to element state&#10;* mouseOver works (but still has bugs)" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement DeviceInteractiveElement (and togglableElement)&#10;&#10;* sub-svgs switched visible according to element state&#10;* mouseOver works (but still has bugs)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

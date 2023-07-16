@@ -1,6 +1,6 @@
 import processing.core.*;
 
-class Ship implements iSysObject, iBusDevice<ShipTelemetryData> {
+class Ship extends EVNgenObject implements iSysObject, iBusDevice<ShipTelemetryData> {
 	
 	EVNgen pa;
 	private String name;

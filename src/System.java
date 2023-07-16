@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import processing.core.*;
 
 
-public class System {
+public class System extends EVNgenObject {
 	
 	
 	EVNgen pa;

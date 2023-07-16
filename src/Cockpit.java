@@ -2,7 +2,7 @@ import processing.core.*;
 
 import java.util.ArrayList;
 
-public class Cockpit {
+public class Cockpit extends EVNgenObject {
 	
 	EVNgen pa;
 	private PShape cgfx;

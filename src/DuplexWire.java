@@ -1,4 +1,4 @@
-public class DuplexWire<T> {
+public class DuplexWire<T> extends EVNgenObject {
 	
 	iBusDuplexConnector conA, conB;
 	

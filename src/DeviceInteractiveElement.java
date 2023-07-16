@@ -7,7 +7,7 @@ import java.util.ArrayList;
 // interactive elements have a varying number of states (e.g. a button has a pressed and a released state, a switch has an on and an off state, a knob has a varying number of states depending on the number of positions it can be turned to, a slider has a varying number of states depending on the number of positions it can be moved to, a display has a varying number of states depending on the number of characters it can display, etc.)
 // interactive elements have a position and extension on that device.
 // interactive elements are parsed from the svg-file of the device that is handed to them in the form of a PShape object.
-public class DeviceInteractiveElement {
+public class DeviceInteractiveElement extends EVNgenObject {
 
     EVNgen pa;
     Device device;

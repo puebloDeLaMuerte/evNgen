@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
-public class Star {
+public class Star extends EVNgenObject {
 	
 	PApplet pa;
 	float xPos, yPos, zPos;
